@@ -82,7 +82,7 @@ cells app:build -c pe/android-dev.js -b novulcanize
 
 ```
 mkdir "$ANDROID_PROJECT/app/src/peruDesa/assets"
-unlink "$ANDROID_PROJECT/app/src/peruDesa/assets/www"build/pe/android-dev/novulcanize/
+unlink "$ANDROID_PROJECT/app/src/peruDesa/assets/www"
 ln -s "$WEB_PROJECT/build/pe/android-dev/novulcanize/" "$ANDROID_PROJECT/app/src/peruDesa/assets/www"
 ls -la "$ANDROID_PROJECT/app/src/peruDesa/assets/"
 ```
