@@ -8,6 +8,7 @@
 4. [Agregar ficheros de firma y credenciales](#agregar-los-ficheros-de-firma-y-credenciales)
 5. [Generación del empaquetado](#generación-del-empaquetado)
 6. [Enlace simbolico](#generación-del-enlace-simbolico)
+7. [Configurar gradle.java.home](#configurar-gradlejavahome)
 
 ## Instalación de Android Studio 
 
@@ -86,5 +87,20 @@ unlink "$ANDROID_PROJECT/app/src/peruDesa/assets/www"
 ln -s "$WEB_PROJECT/build/pe/android-dev/novulcanize/" "$ANDROID_PROJECT/app/src/peruDesa/assets/www"
 ls -la "$ANDROID_PROJECT/app/src/peruDesa/assets/"
 ```
+
+## Configurar gradle.java.home
+
+* Descargar [Java 11](https://www.openlogic.com/openjdk-downloads?field_java_parent_version_target_id=406&field_operating_system_target_id=All&field_architecture_target_id=All&field_java_package_target_id=All), escoger el archivo **tar.gz**
+* Descomprimir y renombrar por `openjdk`
+* En el archivo [gradle.properties](#configuración-gradle) agregar 
+```
+org.gradle.java.home=<PATH>/openjdk/
+```
+Donde `PATH` es la ruta donde se encuentra la carpeta
+
+Con esta configuración se pueden utilizar los comandos de **./gradlew**
+
+* `./gradlew assemblePeruDesaDebug` para generar el apk
+* `./gradlew installPeruDesaDebug` para generar el apk e instalar en emulador o dispositivo fisico
 
 
