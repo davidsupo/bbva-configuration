@@ -101,6 +101,6 @@ Donde `PATH` es la ruta donde se encuentra la carpeta
 Con esta configuración se pueden utilizar los comandos de **./gradlew**
 
 * `./gradlew assemblePeruDesaDebug` para generar el apk
-* `./gradlew installPeruDesaDebug` para generar el apk e instalar en emulador o dispositivo fisico
+* `./gradlew installPeruDesaDebug` para instalar en emulador o dispositivo fisico
 
 
