@@ -106,7 +106,7 @@ Con esta configuración se pueden utilizar los comandos de **./gradlew**
 
 ## Script para ejecutar la construcción nativa
 
-```
+```bash
 #!/bin/bash
 listmodos="develop novulcanize vulcanize"
 listnativo="ios android"
