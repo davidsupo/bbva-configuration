@@ -9,6 +9,7 @@
 5. [Generación del empaquetado](#generación-del-empaquetado)
 6. [Enlace simbolico](#generación-del-enlace-simbolico)
 7. [Configurar gradle.java.home](#configurar-gradlejavahome)
+8. [Script para construcción nativa](#script-para-ejecutar-la-construcción-nativa)
 
 ## Instalación de Android Studio 
 
@@ -59,15 +60,15 @@ export PATH="$PATH:$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION" # 'aa
 
 
 
-## Generación del empaquetado 
+## Generación del empaquetado
 
-* Borrar los archivos de test y demo en componentes bower
+* Depurar archivos en componentes/
 
 ```
 rm -rf components/*/test && rm -rf components/*/demo && rm -rf components/*/coverage-reports && rm -rf components/*/test && rm -rf components/*/test_e2e/node_modules && rm -rf components/*/test_e2e@tmp && rm -rf components/*/gdtoollink && rm -rf components/*/screenshots
 ```
 
-* Borrar los archivos de test y demo en node_modules
+* Depurar archivos node_modules/
 
 ```
 rm -rf node_modules/*/*/coverage-reports && rm -rf node_modules/*/*/demo && rm -rf node_modules/*/*/test && rm -rf node_modules/*/*/parse-json-* && rm -rf node_modules/*/*/test_e2e/node_modules && rm -rf node_modules/*/*/test_e2e@tmp && rm -rf node_modules/*/*/screenshots
@@ -103,4 +104,31 @@ Con esta configuración se pueden utilizar los comandos de **./gradlew**
 * `./gradlew assemblePeruDesaDebug` para generar el apk
 * `./gradlew installPeruDesaDebug` para instalar en emulador o dispositivo fisico
 
+## Script para ejecutar la construcción nativa
+
+```
+#!/bin/bash
+listmodos="develop novulcanize vulcanize"
+listnativo="ios android"
+modo=$1
+nativo=${2:-android}
+if [[ -z "$modo" ]]; then
+        echo "Falta el modo de construcción, ejecutar con {{modo}} {{native}} (native default android)"
+        exit 1
+fi
+if [[ $listmodos != *$modo* ]]; then
+        echo "$modo no es reconocido, utiliza uno de los siguientes: [$listmodos]"
+        exit 1
+fi
+if [[ $listnativo != *$nativo* ]]; then
+        echo "$nativo no es reconocido, utiliza uno de los siguientes: [$listnativo]"
+        exit 1
+fi
+rm -rf components/*/test && rm -rf components/*/demo && rm -rf components/*/coverage-reports && rm -rf components/*/test && rm -rf components/*/test_e2e/node_modules && rm -rf components/*/test_e2e@tmp && rm -rf components/*/gdtoollink && rm -rf components/*/screenshots
+echo "Carpeta components/ depurada!"
+rm -rf node_modules/*/*/coverage-reports && rm -rf node_modules/*/*/demo && rm -rf node_modules/*/*/test && rm -rf node_modules/*/*/parse-json-* && rm -rf node_modules/*/*/test_e2e/node_modules && rm -rf node_modules/*/*/test_e2e@tmp && rm -rf node_modules/*/*/screenshots
+echo "Carpeta node_modules/ depurada!"
+echo "Ejecutando cells app:build -c pe/$nativo-dev.js -b $modo"
+cells app:build -c pe/$nativo-dev.js -b $modo
+```
 
