@@ -110,19 +110,29 @@ Con esta configuración se pueden utilizar los comandos de **./gradlew**
 #!/bin/bash
 listmodos="develop novulcanize vulcanize"
 listnativo="ios android"
+novulcanizepath=$PWD/build/pe/android-dev/novulcanize/
+androidpathwww=~/Documents/Glomo/glomo-android/app/src/peruDesa/assets/www #change for your android path
+currentpath=$PWD/dist/
 modo=$1
 nativo=${2:-android}
 if [[ -z "$modo" ]]; then
-        echo "Falta el modo de construcción, ejecutar con {{modo}} {{native}} (native default android)"
-        exit 1
+	echo "Falta el modo de construcción, ejecutar con {{modo}} {{native}} (native default android)"
+	exit 1
 fi
 if [[ $listmodos != *$modo* ]]; then
-        echo "$modo no es reconocido, utiliza uno de los siguientes: [$listmodos]"
-        exit 1
+	echo "$modo no es reconocido, utiliza uno de los siguientes: [$listmodos]"
+	exit 1
 fi
 if [[ $listnativo != *$nativo* ]]; then
-        echo "$nativo no es reconocido, utiliza uno de los siguientes: [$listnativo]"
-        exit 1
+	echo "$nativo no es reconocido, utiliza uno de los siguientes: [$listnativo]"
+	exit 1
+fi
+if [[ $modo == "novulcanize" ]]; then
+	currentpath=$novulcanizepath
+fi
+if [[ $currentpath != */glomo-pe/* ]]; then
+	echo "Debes ejecutar el script en la raiz del proyecto glomo-pe"
+	exit 1
 fi
 rm -rf components/*/test && rm -rf components/*/demo && rm -rf components/*/coverage-reports && rm -rf components/*/test && rm -rf components/*/test_e2e/node_modules && rm -rf components/*/test_e2e@tmp && rm -rf components/*/gdtoollink && rm -rf components/*/screenshots
 echo "Carpeta components/ depurada!"
@@ -130,5 +140,8 @@ rm -rf node_modules/*/*/coverage-reports && rm -rf node_modules/*/*/demo && rm -
 echo "Carpeta node_modules/ depurada!"
 echo "Ejecutando cells app:build -c pe/$nativo-dev.js -b $modo"
 cells app:build -c pe/$nativo-dev.js -b $modo
+echo "Creando enlace simbolico con $currentpath"
+unlink $androidpathwww
+ln -s $currentpath $androidpathwww
 ```
 
