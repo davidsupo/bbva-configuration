@@ -111,7 +111,7 @@ Con esta configuración se pueden utilizar los comandos de **./gradlew**
 listmodos="develop novulcanize vulcanize"
 listnativo="ios android"
 novulcanizepath=$PWD/build/pe/android-dev/novulcanize/
-androidpathwww=~/Documents/Glomo/glomo-android/app/src/peruDesa/assets/www #change for your android path
+androidpathwww=~/Documents/Glomo/glomo-android/gl-app-config/src/peruDesa/assets/www #change for your android path
 currentpath=$PWD/dist/
 modo=$1
 nativo=${2:-android}
