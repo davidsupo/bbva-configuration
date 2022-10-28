@@ -86,7 +86,7 @@ cells app:build -c pe/android-dev.js -b novulcanize
 mkdir "$ANDROID_PROJECT/gl-app-config/src/peruDesa/assets"
 unlink "$ANDROID_PROJECT/gl-app-config/src/peruDesa/assets/www"
 ln -s "$WEB_PROJECT/build/pe/android-dev/novulcanize/" "$ANDROID_PROJECT/gl-app-config/src/peruDesa/assets/www"
-ls -la "$ANDROID_PROJECT/app/src/peruDesa/assets/"
+ls -la "$ANDROID_PROJECT/gl-app-config/src/peruDesa/assets"
 ```
 
 ## Configurar gradle.java.home
