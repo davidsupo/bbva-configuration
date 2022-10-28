@@ -83,9 +83,9 @@ cells app:build -c pe/android-dev.js -b novulcanize
 ## Generación del enlace simbolico
 
 ```
-mkdir "$ANDROID_PROJECT/app/src/peruDesa/assets"
-unlink "$ANDROID_PROJECT/app/src/peruDesa/assets/www"
-ln -s "$WEB_PROJECT/build/pe/android-dev/novulcanize/" "$ANDROID_PROJECT/app/src/peruDesa/assets/www"
+mkdir "$ANDROID_PROJECT/gl-app-config/src/peruDesa/assets"
+unlink "$ANDROID_PROJECT/gl-app-config/src/peruDesa/assets/www"
+ln -s "$WEB_PROJECT/build/pe/android-dev/novulcanize/" "$ANDROID_PROJECT/gl-app-config/src/peruDesa/assets/www"
 ls -la "$ANDROID_PROJECT/app/src/peruDesa/assets/"
 ```
 
@@ -101,8 +101,8 @@ Donde `PATH` es la ruta donde se encuentra la carpeta
 
 Con esta configuración se pueden utilizar los comandos de **./gradlew**
 
-* `./gradlew assemblePeruDesaDebug` para generar el apk
-* `./gradlew installPeruDesaDebug` para instalar en emulador o dispositivo fisico
+* `./gradlew assemblePeruDesaGoogleDebug` para generar el apk
+* `./gradlew installPeruDesaGoogleDebug` para instalar en emulador o dispositivo fisico
 
 ## Script para ejecutar la construcción nativa
 
