@@ -30,8 +30,9 @@ mkdir .gradle && cd .gradle
 ```
 artifactory_user=<USER>
 artifactory_password=<API_KEY>
-artifactory_contextUrl=https://globaldevtools.bbva.com/artifactory
-artifactory_url=https://globaldevtools.bbva.com/artifactory-api/cells-native
+artifactory_url=https://artifactory.globaldevtools.bbva.com/artifactory/gl-cells-native-maven-virtual
+artifactory_contextUrl=https://globaldevtools.bbva.com:433/artifactory
+cells_mobile_bucket=https://arq-bbva-cells-files.s3-eu-west-1.amazonaws.com/cells/cells-mobile-assets
 #globaldevtools.bbva.com
 ```
 
